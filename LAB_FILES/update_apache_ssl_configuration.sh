@@ -19,4 +19,6 @@ a2ensite default-ssl && \
 
 # test the configuration and reload if all is well
 # end by checking the apache status
-apachectl configtest && systemctl reload apache2 && systemctl status apache2
+apachectl configtest && \
+systemctl reload apache2 && \
+systemctl status apache2
