@@ -5,7 +5,6 @@ then
 else
   echo
   echo "Make sure the hostname is set to 'ubuntu':";
-  echo "Make sure the hostname is set to 'ubuntu':";
   echo
   echo "sudo hostnamectl set-hostname ubuntu"
   echo
