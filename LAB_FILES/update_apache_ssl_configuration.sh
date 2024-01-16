@@ -1,8 +1,10 @@
 # Make sure the hostname is set to ubuntu
-if (hostnamectl | grep -q "Static hostname: ubuntu");
+if (hostnamectl | grep -qE "^Static hostname: ubuntu$");
 then
   echo "Hostname is set to ubuntu"
 else
+  echo
+  echo "Current hostname is $(hostnamectl | grep 'Static hostname' | cut -d: -f2)"
   echo
   echo "Make sure the hostname is set to 'ubuntu':";
   echo
@@ -12,13 +14,16 @@ else
 fi
 
 # copy the updated default SSL site configuration into place
-cp -v /home/pslearner/lab/LAB_FILES/default-ssl.conf /etc/apache2/sites-available/
+sudo cp -v /home/pslearner/lab/LAB_FILES/default-ssl.conf /etc/apache2/sites-available/
 
 # enable the default SSL site 
-a2ensite default-ssl && \
+sudo a2ensite default-ssl && \
 
-# test the configuration and reload if all is well
-# end by checking the apache status
-apachectl configtest && \
-systemctl reload apache2 && \
-systemctl status apache2
+# test the configuration
+sudo apachectl configtest && \
+
+# reload if all is well
+sudo systemctl reload apache2 && \
+
+# if reload is good, check the status
+sudo systemctl status apache2
