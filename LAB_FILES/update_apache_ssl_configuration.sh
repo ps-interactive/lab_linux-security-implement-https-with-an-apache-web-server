@@ -1,16 +1,9 @@
 # Make sure the hostname is set to ubuntu
-if (hostnamectl | grep -qE "^Static hostname: ubuntu$");
+if (hostnamectl | grep -qE "Static hostname: ubuntu$");
 then
-  echo "Hostname is set to ubuntu"
+  echo
 else
-  echo
-  echo "Current hostname is $(hostnamectl | grep 'Static hostname' | cut -d: -f2)"
-  echo
-  echo "Make sure the hostname is set to 'ubuntu':";
-  echo
-  echo "sudo hostnamectl set-hostname ubuntu"
-  echo
-  return 1
+  sudo hostnamectl set-hostname ubuntu
 fi
 
 # copy the updated default SSL site configuration into place
