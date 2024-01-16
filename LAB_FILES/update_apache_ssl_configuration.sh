@@ -10,7 +10,7 @@ fi
 sudo cp -v /home/pslearner/lab/LAB_FILES/default-ssl.conf /etc/apache2/sites-available/
 
 # enable the SSL module
-a2enmod ssl && \
+sudo a2enmod ssl && \
 
 # enable the default SSL site 
 sudo a2ensite default-ssl && \
