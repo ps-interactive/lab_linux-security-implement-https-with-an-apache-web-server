@@ -16,10 +16,4 @@ sudo a2enmod ssl && \
 sudo a2ensite default-ssl && \
 
 # test the configuration
-sudo apachectl configtest && \
-
-# reload if all is well
-sudo systemctl reload apache2 && \
-
-# if reload is good, check the status
-sudo systemctl status apache2
+sudo apachectl configtest
